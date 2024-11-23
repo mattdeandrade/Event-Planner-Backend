@@ -11,6 +11,13 @@ const seed = async (numUsers = 80, numEvents = 20) => {
     email: faker.internet.email(),
   }));
   await prisma.user.createMany({ data: users });
+
+  const partyFiller = Array.from({ length: 20 }, () => ({
+    guestIds: Array.from(
+      { length: Math.floor(Math.random() * 80) - 1 },
+      (j) => j
+    ),
+  }));
   const events = Array.from({ length: numEvents }, () => ({
     name: faker.person.firstName + "'s " + faker.commerce.product(),
     date: faker.date.future(),
