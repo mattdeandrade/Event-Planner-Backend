@@ -1,4 +1,3 @@
-/ Import Enviroment
 require("dotenv").config();
 
 // Define Express App
